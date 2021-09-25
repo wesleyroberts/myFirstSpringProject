@@ -15,7 +15,7 @@ public class Profession implements Serializable {
     private Long id;
 
     private String name;
-    private String decription;
+    private String description;
     @JsonIgnore
     @OneToMany(mappedBy = "profession")
     private List<User> user=new ArrayList<>();
@@ -23,10 +23,10 @@ public class Profession implements Serializable {
     public Profession(){
 
     }
-    public Profession(Long id, String name, String decription) {
+    public Profession(Long id, String name, String description) {
         this.id = id;
         this.name = name;
-        this.decription = decription;
+        this.description = description;
     }
 
     public Long getId() {
@@ -45,12 +45,12 @@ public class Profession implements Serializable {
         this.name = name;
     }
 
-    public String getDecription() {
-        return decription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<User> getUser() {

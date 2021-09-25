@@ -2,22 +2,18 @@ package com.myproject.projectSpring;
 
 import com.myproject.projectSpring.entities.Profession;
 import com.myproject.projectSpring.entities.User;
-import com.myproject.projectSpring.repositories.CategoryRepository;
 import com.myproject.projectSpring.repositories.ProfessionRepository;
 import com.myproject.projectSpring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.myproject.projectSpring.entities.Category;
 
 
 @SpringBootApplication
 
 public class ProjectSpringApplication implements CommandLineRunner {
 
-	@Autowired
-	private CategoryRepository categoryRepository;
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired

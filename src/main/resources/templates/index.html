@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form class="form" id="mysForm" method="POST">
+      <label for="inp_name">name</label>
+      <input type="text" name="name" id="name" />
+      <label for="inp_description">description</label>
+      <input type="text" name="description" id="description" />
+      <button type="submit">submit</button>
+    </form>
+
+    <script>
+      const test = btoa("test@liferay.com:test");
+      //this function delete the blog posting that you created, it need that you into the blog-posting id
+      function DELETE(id) {
+        fetch(`http://localhost:8080/user/delete/${id}`, {
+          method: "DELETE",
+        });
+      }
+      //this function get all blogs posting that you made
+      function GET() {
+        fetch("http://localhost:8080/profission/all", {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then((data) => console.log("Success:", data));
+      }
+      //this function post a blog posting
+      function POST(name, desc) {
+        let obj = { id: null, name: name, description: desc };
+        console.log(obj);
+        fetch(`http://localhost:8080/profission/post`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(obj),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log("Success:", data));
+      }
+
+      function PUT(id, headLineInput, articleBodyInput) {
+        let obj = { headline: headLineInput, articleBody: articleBodyInput };
+        fetch(
+          `http://localhost:8080/o/headless-delivery/v1.0/blog-postings/${id}`,
+          {
+            method: "PUT",
+            headers: {
+              Authorization: "Basic " + test,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(obj),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => console.log("Success:", data));
+      }
+
+      //this function get only one blog posting, it need that a blog posting id
+      function GETONE(id) {
+        fetch(`http://localhost:8080/user/${id}`, {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then((data) => console.log("Success:", data));
+      }
+
+      GET();
+      POST("wesley", "test");
+    </script>
+  </body>
+</html>
