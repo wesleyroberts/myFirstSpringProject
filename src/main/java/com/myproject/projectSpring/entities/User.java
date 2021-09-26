@@ -11,7 +11,6 @@ public class User implements Serializable {
     private Long id;
     private String name;
     @ManyToOne
-    @JoinColumn(name="profession_id")
     private Profession profession;
 
     public User(){
